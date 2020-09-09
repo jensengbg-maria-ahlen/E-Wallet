@@ -10,11 +10,11 @@
       <section id="cardBottom">
         <section class="name">
             <h5>CARDHOLDER NAME</h5>
-            <h4></h4>
+            <h4>{{ cardInfo.name }}</h4>
         </section>
         <section class="date">
             <h5>VALID THRU</h5>
-            <h4></h4>
+            <h4>{{ cardInfo.date }}</h4>
         </section>
       </section>
   </article>

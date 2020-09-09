@@ -2,8 +2,8 @@
   <main id="home">
     <Top />
     <h4>ACTIVE CARD</h4>
-    <Card />
-    <CardStack />
+    <Card :cardInfo="cardInfo" />
+    <CardStack :cardInfo="cardInfo" />
     <button @click="goTo">ADD A NEW CARD</button>
   </main>
 </template>
@@ -19,6 +19,9 @@ export default {
     Top,
     Card,
     CardStack
+  },
+  props: {
+    cardInfo: Object
   },
   methods: {
     goTo() {

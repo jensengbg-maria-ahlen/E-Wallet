@@ -26,6 +26,8 @@ export default {
   methods: {
     addCard(value) {
       this.cardInfo = value
+      this.$emit('cardInfo', this.cardInfo)
+      this.$router.push('/', this.cardInfo)
     }
   }
 }

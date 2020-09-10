@@ -1,5 +1,5 @@
 <template>
-  <form id="cardForm">
+  <section id="cardForm">
     <section class="cardNumber">
       <span>CARD NUMBER</span>
       <input
@@ -46,7 +46,7 @@
         <option value="evil">EVIL CORP</option>
       </select>
     </section>
-  </form>
+  </section>
 </template>
 
 <script>

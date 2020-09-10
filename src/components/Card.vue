@@ -1,8 +1,8 @@
 <template>
   <article id="card" :class="headline">
     <section id="cardTop">
-      <img src="'@/assets/chip-dark.svg'" alt="chip">
-      <img src="'@/assets/vendor-bitcoin.svg'" alt="vendor">
+      <img class="chipImg" src="@/assets/chip-dark.svg" alt="chip">
+      <img class="vendorImg" src="@/assets/vendor-bitcoin.svg" alt="vendor">
     </section>
     <section id="cardMiddle">
       <h3>{{ cardInfo.cardNumber }}</h3>
@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 #card {
   width: 380px;
-  height: 210px;
+  height: 240px;
   background: #d0d0d0;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
@@ -63,11 +63,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  img {
-    width: 10rem;
-    height: 10rem;
-  }
 
   &.bitcoin {
     background: #FFAE34;
@@ -153,17 +148,27 @@ export default {
 
   #cardTop {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 380px;
-    height: 70px;
+    height: 100px;
+    
+    .chipImg {
+      margin-left: 1rem;
+    }
+
+    .vendorImg {
+      margin-right: 1rem;
+      margin-top: -3rem;
+    }
   }
 
   #cardMiddle {
     width: 380px;
-    height: 70px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -1rem;
 
     h3 {
         font-size: 29px;
@@ -178,7 +183,7 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     width: 380px;
-    height: 70px;
+    height: 40px;
 
     .name {
       display: flex;

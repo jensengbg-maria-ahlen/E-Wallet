@@ -2,7 +2,7 @@
   <section id="addCard">
     <Top />
     <h4 id="newCard">NEW CARD</h4>
-    <Card :cardInfo="cardInfo" />
+    <Card :cardInfo="formInfo" />
     <CardForm v-on:cardInfo="addInfo" />
     <button @click="goTo" id="addButton">ADD CARD</button>
   </section>
@@ -21,16 +21,27 @@ export default {
     CardForm,
   },
   props: {
-    cardInfo: Object,
+    cardInfo: Object
+  },
+  data() {
+    return {
+      formInfo: {
+        cardNumber: "",
+        name: "",
+        date: "",
+        ccv: "",
+        vendor: "",
+      }
+    }
   },
   methods: {
     addInfo(value) {
-      this.cardInfo = value;
-      this.$emit("cardInfo", this.cardInfo);
+      this.formInfo = value;
+      this.$emit("cardInfo", this.formInfo);
     },
     goTo() {
       this.$router.push("/");
-      localStorage.setItem('card', JSON.stringify(this.cardInfo));
+      sessionStorage.setItem('card', JSON.stringify(this.cardInfo));
     },
   },
 };

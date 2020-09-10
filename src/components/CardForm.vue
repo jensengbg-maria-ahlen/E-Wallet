@@ -3,14 +3,12 @@
     <section class="cardNumber">
       <span>CARD NUMBER</span>
       <input
-        type="number"
-        v-model="cardInfo.cardNumber"
+        type="text"
+        v-model.number="cardInfo.cardNumber"
         v-on:keyup="addValue"
         placeholder="XXXX XXXX XXXX XXXX"
-        required
       />
     </section>
-
     <section class="cardName">
       <span>CARDHOLDER NAME</span>
       <input
@@ -18,11 +16,8 @@
         v-model="cardInfo.name"
         v-on:keyup="addValue"
         placeholder="FIRSTNAME LASTNAME"
-        minlength="3"
-        required
       />
     </section>
-
     <section class="dateAndCcv">
       <section class="cardDate">
         <span>VALID THRU</span>
@@ -31,19 +26,20 @@
           v-model="cardInfo.date"
           v-on:keyup="addValue"
           placeholder="MM/YY"
-          required
         />
       </section>
-
       <section class="cardCcv">
         <span>CCV</span>
-        <input type="number" v-model="cardInfo.ccv" v-on:keyup="addValue" maxlength="3" required />
+        <input 
+          type="text" 
+          v-model.number="cardInfo.ccv" 
+          v-on:keyup="addValue" 
+          />
       </section>
     </section>
-
     <section class="cardVendor">
       <span>VENDOR</span>
-      <select v-model="cardInfo.vendor" v-on:keyup="addValue" required>
+      <select v-model="cardInfo.vendor" v-on:keyup="addValue">
         <option value="bitcoin">BITCOIN INC</option>
         <option value="ninja">NINJA BANK</option>
         <option value="blockchain">BLOCK CHAIN INC</option>
@@ -65,7 +61,7 @@ export default {
         ccv: "",
         vendor: "",
       },
-    };
+    }
   },
   methods: {
     addValue() {

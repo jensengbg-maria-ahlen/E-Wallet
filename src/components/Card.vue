@@ -1,8 +1,8 @@
 <template>
   <article id="card" :class="headline">
     <section id="cardTop">
-      <img :src="'@/assets/chip-dark.svg'" alt="chip" />
-      <img :src="'@/assets/vendor-bitcoin.svg'" alt="vendor" />
+      <img src="'@/assets/chip-dark.svg'" alt="chip">
+      <img src="'@/assets/vendor-bitcoin.svg'" alt="vendor">
     </section>
     <section id="cardMiddle">
       <h3>{{ cardInfo.cardNumber }}</h3>
@@ -63,7 +63,11 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
 
   &.bitcoin {
     background: #FFAE34;

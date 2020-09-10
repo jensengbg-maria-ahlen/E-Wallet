@@ -5,31 +5,11 @@
 </template>
 
 <script>
-//import routes from '@/router/index';
-
 export default {
     name: 'Top',
     props: {
       cardInfo: Object
     }
-/*
-    components: {
-      routes
-    },
-    methods: {
-      setHeadline() {
-        let headline = ''
-        if( routes.path === '/addcard') {
-          let headline = 'ADD A NEW BANK CARD';
-          return headline
-        } else {
-          let headline = 'E-WALLET';
-          return headline
-        }
-      }
-    }
-
-    */
 }
 
 </script>

@@ -1,8 +1,8 @@
 <template>
   <article id="card" :class="headline">
     <section id="cardTop">
-      <img class="chipImg" src="@/assets/chip-dark.svg" alt="chip">
-      <img class="vendorImg" src="@/assets/vendor-bitcoin.svg" alt="vendor">
+      <img class="chipImg" :src="darkChipImg" alt="chip">
+      <img class="vendorImg" :src="bitcoinImg" alt="vendor">
     </section>
     <section id="cardMiddle">
       <h3>{{ cardInfo.cardNumber }}</h3>
@@ -21,10 +21,27 @@
 </template>
 
 <script>
+import bitcoinSVG from '@/assets/vendor-bitcoin.svg';
+import ninjaSVG from '@/assets/vendor-ninja.svg';
+import blockchainSVG from '@/assets/vendor-blockchain.svg';
+import evilSVG from '@/assets/vendor-evil.svg';
+import darkChipSVG from '@/assets/chip-dark.svg';
+import lightChipSVG from '@/assets/chip-light.svg';
+
 export default {
   name: "Card",
   props: {
     cardInfo: Object,
+  },
+  data() {
+    return {
+      bitcoinImg: bitcoinSVG,
+      ninjaImg: ninjaSVG,
+      blockchainImg: blockchainSVG,
+      evilImg: evilSVG,
+      darkChipImg: darkChipSVG,
+      lightChipImg: lightChipSVG,
+    }
   },
   computed: {
       headline() {

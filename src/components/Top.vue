@@ -1,6 +1,6 @@
 <template>
   <article>
-      <h1>RUBRIK</h1>
+      <h1></h1>
   </article>
 </template>
 
@@ -9,6 +9,9 @@
 
 export default {
     name: 'Top',
+    props: {
+      cardInfo: Object
+    }
 /*
     components: {
       routes

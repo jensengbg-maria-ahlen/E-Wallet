@@ -1,5 +1,5 @@
 <template>
-  <article id="card">
+  <article id="card" :class="headline">
     <section id="cardTop">
       <img :src="'@/assets/chip-dark.svg'" alt="chip" />
       <img :src="'@/assets/vendor-bitcoin.svg'" alt="vendor" />
@@ -26,6 +26,26 @@ export default {
   props: {
     cardInfo: Object,
   },
+  computed: {
+      headline() {
+        let className = ''
+
+        if(this.cardInfo.vendor === "bitcoin") {
+          className = "bitcoin"
+        }
+        if(this.cardInfo.vendor === "ninja") {
+          className = "ninja"
+        }
+        if(this.cardInfo.vendor === "blockchain") {
+          className = "blockchain"
+        }
+        if(this.cardInfo.vendor === "evil") {
+          className = "evil"
+        }
+
+        return className
+      }
+    }
 };
 </script>
 
@@ -44,6 +64,88 @@ export default {
   justify-content: center;
   align-items: center;
   
+
+  &.bitcoin {
+    background: #FFAE34;
+  }
+
+  &.ninja {
+    background: #222222;
+
+    #cardMiddle {
+
+      h3 {
+        color: #ffffff;
+      }
+    }
+    
+    #cardBottom {
+
+      .name {
+        h5, h4 {
+          color: #ffffff;
+        }
+      }
+
+      .date {
+        h5, h4 {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  &.blockchain {
+    background: #8B58F9;
+
+    #cardMiddle {
+
+      h3 {
+        color: #ffffff;
+      }
+    }
+    
+    #cardBottom {
+
+      .name {
+        h5, h4 {
+          color: #ffffff;
+        }
+      }
+
+      .date {
+        h5, h4 {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  &.evil {
+    background: #F33355;
+
+    #cardMiddle {
+
+      h3 {
+        color: #ffffff;
+      }
+    }
+    
+    #cardBottom {
+
+      .name {
+        h5, h4 {
+          color: #ffffff;
+        }
+      }
+
+      .date {
+        h5, h4 {
+          color: #ffffff;
+        }
+      }
+    }
+  }
 
   #cardTop {
     display: flex;
@@ -81,6 +183,7 @@ export default {
       align-items: flex-start;
       width: 190px;
       padding-left: 1rem;
+      text-transform: uppercase;
 
       h5 {
         font-size: 12px;

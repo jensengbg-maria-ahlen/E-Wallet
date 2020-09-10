@@ -41,7 +41,7 @@ export default {
     },
     goTo() {
       this.$router.push("/");
-      sessionStorage.setItem('card', JSON.stringify(this.cardInfo));
+      localStorage.setItem('card', JSON.stringify(this.formInfo));
     },
   },
 };

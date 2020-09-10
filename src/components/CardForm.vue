@@ -1,5 +1,5 @@
 <template>
-  <form id="cardForm" >
+  <form id="cardForm">
     <section class="cardNumber">
       <span>CARD NUMBER</span>
       <input
@@ -67,7 +67,7 @@ export default {
     addValue() {
       this.$emit("cardInfo", this.cardInfo);
     },
-  },
+  }
 };
 </script>
 

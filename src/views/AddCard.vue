@@ -44,6 +44,12 @@ export default {
       localStorage.setItem('card', JSON.stringify(this.formInfo));
     },
   },
+  mounted() {
+    let card = localStorage.getItem('card');
+    if(card !== null) {
+      this.card = JSON.parse(card)
+    }
+  }
 };
 </script>
 

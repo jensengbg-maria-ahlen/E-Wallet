@@ -1,8 +1,12 @@
 <template>
-  <article id="card" :class="headline">
+  <article id="card" :class="vendorOfChoice">
     <section id="cardTop">
-      <img class="chipImg" :src="darkChipImg" alt="chip">
-      <img class="vendorImg" :src="bitcoinImg" alt="vendor">
+      <img class="chipImg" src="@/assets/chip-light.svg" alt="chip">
+      <img class="vendorImg" v-if="cardInfo.vendor == ''" src="@/assets/vendor-bitcoin.svg" alt="chip">
+      <img class="vendorImg" v-if="cardInfo.vendor == 'bitcoin'" src="@/assets/vendor-bitcoin.svg" alt="chip">
+      <img class="vendorImg" v-if="cardInfo.vendor == 'ninja'" src="@/assets/vendor-ninja.svg" alt="chip">
+      <img class="vendorImg" v-if="cardInfo.vendor == 'blockchain'" src="@/assets/vendor-blockchain.svg" alt="chip">
+      <img class="vendorImg" v-if="cardInfo.vendor == 'evil'" src="@/assets/vendor-evil.svg" alt="chip">
     </section>
     <section id="cardMiddle">
       <h3>{{ cardInfo.cardNumber }}</h3>
@@ -21,46 +25,32 @@
 </template>
 
 <script>
-import bitcoinSVG from '@/assets/vendor-bitcoin.svg';
-import ninjaSVG from '@/assets/vendor-ninja.svg';
-import blockchainSVG from '@/assets/vendor-blockchain.svg';
-import evilSVG from '@/assets/vendor-evil.svg';
-import darkChipSVG from '@/assets/chip-dark.svg';
-import lightChipSVG from '@/assets/chip-light.svg';
 
 export default {
   name: "Card",
   props: {
     cardInfo: Object,
   },
-  data() {
-    return {
-      bitcoinImg: bitcoinSVG,
-      ninjaImg: ninjaSVG,
-      blockchainImg: blockchainSVG,
-      evilImg: evilSVG,
-      darkChipImg: darkChipSVG,
-      lightChipImg: lightChipSVG,
-    }
-  },
   computed: {
-      headline() {
-        let className = ''
+      vendorOfChoice() {
+        let vendorClassName = ''
 
+        if(this.cardInfo.vendor === ''){
+          vendorClassName = "standard"
+        }
         if(this.cardInfo.vendor === "bitcoin") {
-          className = "bitcoin"
+          vendorClassName = "bitcoin"
         }
         if(this.cardInfo.vendor === "ninja") {
-          className = "ninja"
+          vendorClassName = "ninja"
         }
         if(this.cardInfo.vendor === "blockchain") {
-          className = "blockchain"
+          vendorClassName = "blockchain"
         }
         if(this.cardInfo.vendor === "evil") {
-          className = "evil"
+          vendorClassName = "evil"
         }
-
-        return className
+        return vendorClassName
       }
     }
 };
@@ -80,6 +70,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &.standard {
+    background: #d0d0d0;
+  }
 
   &.bitcoin {
     background: #FFAE34;

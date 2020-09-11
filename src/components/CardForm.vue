@@ -7,6 +7,9 @@
         v-model.number="cardInfo.cardNumber"
         v-on:keyup="addValue"
         placeholder="XXXX XXXX XXXX XXXX"
+        maxlength="16"
+        minlength="16"
+        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
       />
     </section>
     <section class="cardName">
@@ -26,6 +29,8 @@
           v-model="cardInfo.date"
           v-on:keyup="addValue"
           placeholder="MM/YY"
+          maxlength="5"
+          minlength="5"
         />
       </section>
       <section class="cardCcv">
@@ -33,7 +38,10 @@
         <input 
           type="text" 
           v-model.number="cardInfo.ccv" 
-          v-on:keyup="addValue" 
+          v-on:keyup="addValue"
+          placeholder="XXX"
+          maxlength="3"
+          onkeypress='return event.charCode >= 48 && event.charCode <= 57'
           />
       </section>
     </section>

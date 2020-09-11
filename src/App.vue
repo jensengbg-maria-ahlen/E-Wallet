@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view :cardInfo="cardInfo" @cardInfo="listenCardInfo"/>
+    <router-view 
+      :cardInfo="cardInfo" 
+      @cardInfo="listenCardInfo"/>
   </div>
 </template>
 
@@ -15,7 +17,8 @@ export default {
         date: "",
         ccv: "",
         vendor: "",
-      }
+      },
+      card: []
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view :cards="cards" :cardInfo="cardInfo" @cardInfo="listenCardInfo" @cards="addCards"/>
+    <router-view :cards="cards" :cardInfo="cardInfo" @cardInfo="listenCardInfo" @addCards="addCards"/>
   </div>
 </template>
 
@@ -21,10 +21,10 @@ export default {
   },
   methods: {
     listenCardInfo(value) {
-      return this.cardInfo = value
+      return (this.cardInfo = value), this.addCards();
     },
     addCards() {
-      return this.cards.push(this.cardInfo);
+      return this.cards.push(this.cardInfo)
     }
   }
 }

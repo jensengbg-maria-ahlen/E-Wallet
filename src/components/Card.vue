@@ -5,28 +5,28 @@
         <img src="@/assets/chip-light.svg" alt="chip" />
       </article>
 
-      <article class="vendorImg">
-        <img v-if="cardInfo.vendor == ''" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
-        <img v-if="cardInfo.vendor == 'bitcoin'" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
-        <img v-if="cardInfo.vendor == 'ninja'" src="@/assets/vendor-ninja.svg" alt="vendor" />
-        <img v-if="cardInfo.vendor == 'blockchain'" src="@/assets/vendor-blockchain.svg" alt="vendor" />
-        <img v-if="cardInfo.vendor == 'evil'" src="@/assets/vendor-evil.svg" alt="vendor" />
+      <article class="vendorImg" >
+        <img v-if="cardData.vendor == 'bitcoin'" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
+        <img v-if="cardData.vendor == 'ninja'" src="@/assets/vendor-ninja.svg" alt="vendor" />
+        <img v-if="cardData.vendor == 'blockchain'" src="@/assets/vendor-blockchain.svg" alt="vendor" />
+        <img v-if="cardData.vendor == 'evil'" src="@/assets/vendor-evil.svg" alt="vendor" />
+        <img v-if="cardData.vendor == ''" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
       </article>
     </section>
 
     <section id="cardMiddle">
-      <h3>{{ cardInfo.cardNumber }}</h3>
+      <h3>{{ infoCard.cardNumber }}</h3>
     </section>
 
     <section id="cardBottom">
       <section class="name">
         <h5>CARDHOLDER NAME</h5>
-        <h4>{{ cardInfo.name }}</h4>
+        <h4>{{ infoCard.name }}</h4>
       </section>
 
       <section class="date">
         <h5>VALID THRU</h5>
-        <h4>{{ cardInfo.date }}</h4>
+        <h4>{{ infoCard.date }}</h4>
       </section>
     </section>
   </article>
@@ -36,30 +36,39 @@
 export default {
   name: "Card",
   props: {
-    cardInfo: Object,
+    cardData: Object,
   },
   computed: {
     vendorOfChoice() {
       let vendorClassName = "";
 
-      if (this.cardInfo.vendor === "") {
+      if (this.cardData.vendor === "") {
         vendorClassName = "standard";
       }
-      if (this.cardInfo.vendor === "bitcoin") {
+      if (this.cardData.vendor === "bitcoin") {
         vendorClassName = "bitcoin";
       }
-      if (this.cardInfo.vendor === "ninja") {
+      if (this.cardData.vendor === "ninja") {
         vendorClassName = "ninja";
       }
-      if (this.cardInfo.vendor === "blockchain") {
+      if (this.cardData.vendor === "blockchain") {
         vendorClassName = "blockchain";
       }
-      if (this.cardInfo.vendor === "evil") {
+      if (this.cardData.vendor === "evil") {
         vendorClassName = "evil";
       }
       return vendorClassName;
+    },
+    infoCard() {
+      return this.cardData
     }
   },
+  methods: {
+    infoVendor() {
+      this.$emit('cardInfo', this.cardInfo)
+    }
+  }
+    
 };
 </script>
 

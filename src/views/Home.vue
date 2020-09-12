@@ -2,9 +2,8 @@
   <main id="home">
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
-    <Card :cardInfo="cardInfo" />
-    <CardStack :cards="cards" />
-    <button @click="goTo" id="goToButton">ADD A NEW CARD</button>
+    <Card :cardData="allCards" @click="showActiveCard" />
+    <CardStack :cards="cards" @getTheCard="getTheCard" @click="showActiveCard"/>
   </main>
 </template>
 
@@ -43,12 +42,13 @@ export default {
     }
   },
   methods: {
-    goTo() {
-      this.$router.push('/addcard');
+    getTheCard() {
+      let cards = localStorage.getItem('newCard')
+      return cards
     },
-    getTheCard(value) {
-      this.cardsArray = value
-      this.$emit('cardInfo', this.cardsArray)
+    showActiveCard() {
+      let index = this.cardsArray.findIndex(item => item.id === this.cards.id );
+      console.log(index)
     }
   }
 }
@@ -66,21 +66,6 @@ export default {
     font-size: 12px;
     line-height: 15px;
     color: rgba(34, 34, 34, 0.6);
-    }
-
-    #goToButton {
-      width: 382px;
-      height: 80px;
-      border: 1px solid #000000;
-      box-sizing: border-box;
-      border-radius: 8px;
-      font-family: 'PT Mono';
-      font-weight: bold;
-      font-size: 22px;
-      line-height: 25px;
-      background: white;
-      color: #000000;
-    }
-  
+    }  
   }
 </style>

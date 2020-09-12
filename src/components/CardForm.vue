@@ -5,7 +5,6 @@
       <input
         type="text"
         v-model.number="cardInfo.cardNumber"
-        v-on:keyup="addValue"
         placeholder="XXXX XXXX XXXX XXXX"
         maxlength="16"
         minlength="16"
@@ -17,7 +16,6 @@
       <input
         type="text"
         v-model="cardInfo.name"
-        v-on:keyup="addValue"
         placeholder="FIRSTNAME LASTNAME"
       />
     </section>
@@ -27,7 +25,6 @@
         <input
           type="text"
           v-model="cardInfo.date"
-          v-on:keyup="addValue"
           placeholder="MM/YY"
           maxlength="5"
           minlength="5"
@@ -38,7 +35,6 @@
         <input 
           type="text" 
           v-model.number="cardInfo.ccv" 
-          v-on:keyup="addValue"
           placeholder="XXX"
           maxlength="3"
           onkeypress='return event.charCode >= 48 && event.charCode <= 57'
@@ -47,13 +43,15 @@
     </section>
     <section class="cardVendor">
       <span>VENDOR</span>
-      <select v-model="cardInfo.vendor" v-on:keyup="addValue">
+      <select v-model="cardInfo.vendor">
         <option value="bitcoin">BITCOIN INC</option>
         <option value="ninja">NINJA BANK</option>
         <option value="blockchain">BLOCK CHAIN INC</option>
         <option value="evil">EVIL CORP</option>
       </select>
     </section>
+    
+    <button @click="goTo" id="addButton">ADD CARD</button>
   </section>
 </template>
 
@@ -76,7 +74,11 @@ export default {
       this.$emit("cardInfo", this.cardInfo);
     },
     localCard() {
-      return localStorage.setItem('card', this.cardInfo)
+      return localStorage.setItem('newCard', this.cardInfo)
+    },
+    goTo() {
+      this.addValue();
+      this.$router.push("/");
     }
   }
 };
@@ -162,6 +164,19 @@ export default {
       box-sizing: border-box;
       border-radius: 8px;
     }
+  }
+
+  #addButton {
+    margin-top: 2rem;
+    width: 382px;
+    height: 72px;
+    background: #000000;
+    border-radius: 8px;
+    font-family: "PT Mono";
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 25px;
+    color: #ffffff;
   }
 }
 </style>

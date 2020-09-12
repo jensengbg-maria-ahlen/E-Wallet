@@ -1,31 +1,32 @@
 <template>
   <section>
-      <TheCards 
-      v-for="(card, index) in cards"
-      v-bind:key="index"
-      v-bind:cardInfo="card" />
+    <TheCards v-for="(card, index) in cards" :key="index" :cardData="card" />
   </section>
 </template>
 
 <script>
-import TheCards from '@/components/Card';
+import TheCards from "@/components/Card";
 
 export default {
-    name: 'CardStack',
-    components: {
-      TheCards
-    },
-    props: {
-    cardInfo: Object,
-    },
-    data() {
-      return {
-        cards: []
-      }
+  name: "CardStack",
+  components: {
+    TheCards,
+  },
+  props: {
+    cards: Array,
+  },
+  data() {
+    return {
+      cardArray: []
     }
-}
+  },
+  computed: {
+    info() {
+      return this.cards
+    }
+  }
+};
 </script>
 
 <style>
-
 </style>

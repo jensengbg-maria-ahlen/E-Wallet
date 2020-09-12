@@ -3,7 +3,7 @@
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
     <Card :cardInfo="cardInfo" />
-    <CardStack v-on:cardInfo="cardInfo" />
+    <CardStack :cards="cards" />
     <button @click="goTo" id="goToButton">ADD A NEW CARD</button>
   </main>
 </template>
@@ -21,11 +21,34 @@ export default {
     CardStack
   },
   props: {
-    cardInfo: Object
+    cardInfo: Object,
+    cards: Array
+  },
+  data() {
+    return {
+      cardsArray: [
+        {
+          cardNumber: "",
+          name: "",
+          date: "",
+          ccv: "",
+          vendor: "",
+        }
+      ]
+    }
+  },
+  computed: {
+    allCards() {
+      return this.cards[0]
+    }
   },
   methods: {
     goTo() {
       this.$router.push('/addcard');
+    },
+    getTheCard(value) {
+      this.cardsArray = value
+      this.$emit('cardInfo', this.cardsArray)
     }
   }
 }

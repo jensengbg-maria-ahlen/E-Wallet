@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <router-view 
-      :cardInfo="cardInfo" 
-      @cardInfo="listenCardInfo"/>
+    <router-view :cards="cards" :cardInfo="cardInfo" @cardInfo="listenCardInfo" @cards="addCards"/>
   </div>
 </template>
 
@@ -18,12 +16,15 @@ export default {
         ccv: "",
         vendor: "",
       },
-      card: []
+      cards: []
     }
   },
   methods: {
     listenCardInfo(value) {
       return this.cardInfo = value
+    },
+    addCards() {
+      return this.cards.push(this.cardInfo);
     }
   }
 }

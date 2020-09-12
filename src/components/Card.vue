@@ -1,21 +1,29 @@
 <template>
   <article id="card" :class="vendorOfChoice">
     <section id="cardTop">
-      <img class="chipImg" src="@/assets/chip-light.svg" alt="chip">
-      <img class="vendorImg" v-if="cardInfo.vendor == ''" src="@/assets/vendor-bitcoin.svg" alt="chip">
-      <img class="vendorImg" v-if="cardInfo.vendor == 'bitcoin'" src="@/assets/vendor-bitcoin.svg" alt="chip">
-      <img class="vendorImg" v-if="cardInfo.vendor == 'ninja'" src="@/assets/vendor-ninja.svg" alt="chip">
-      <img class="vendorImg" v-if="cardInfo.vendor == 'blockchain'" src="@/assets/vendor-blockchain.svg" alt="chip">
-      <img class="vendorImg" v-if="cardInfo.vendor == 'evil'" src="@/assets/vendor-evil.svg" alt="chip">
+      <article class="chipImg">
+        <img src="@/assets/chip-light.svg" alt="chip" />
+      </article>
+
+      <article class="vendorImg">
+        <img v-if="cardInfo.vendor == ''" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
+        <img v-if="cardInfo.vendor == 'bitcoin'" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
+        <img v-if="cardInfo.vendor == 'ninja'" src="@/assets/vendor-ninja.svg" alt="vendor" />
+        <img v-if="cardInfo.vendor == 'blockchain'" src="@/assets/vendor-blockchain.svg" alt="vendor" />
+        <img v-if="cardInfo.vendor == 'evil'" src="@/assets/vendor-evil.svg" alt="vendor" />
+      </article>
     </section>
+
     <section id="cardMiddle">
       <h3>{{ cardInfo.cardNumber }}</h3>
     </section>
+
     <section id="cardBottom">
       <section class="name">
         <h5>CARDHOLDER NAME</h5>
         <h4>{{ cardInfo.name }}</h4>
       </section>
+
       <section class="date">
         <h5>VALID THRU</h5>
         <h4>{{ cardInfo.date }}</h4>
@@ -25,34 +33,33 @@
 </template>
 
 <script>
-
 export default {
   name: "Card",
   props: {
     cardInfo: Object,
   },
   computed: {
-      vendorOfChoice() {
-        let vendorClassName = ''
+    vendorOfChoice() {
+      let vendorClassName = "";
 
-        if(this.cardInfo.vendor === ''){
-          vendorClassName = "standard"
-        }
-        if(this.cardInfo.vendor === "bitcoin") {
-          vendorClassName = "bitcoin"
-        }
-        if(this.cardInfo.vendor === "ninja") {
-          vendorClassName = "ninja"
-        }
-        if(this.cardInfo.vendor === "blockchain") {
-          vendorClassName = "blockchain"
-        }
-        if(this.cardInfo.vendor === "evil") {
-          vendorClassName = "evil"
-        }
-        return vendorClassName
+      if (this.cardInfo.vendor === "") {
+        vendorClassName = "standard";
       }
+      if (this.cardInfo.vendor === "bitcoin") {
+        vendorClassName = "bitcoin";
+      }
+      if (this.cardInfo.vendor === "ninja") {
+        vendorClassName = "ninja";
+      }
+      if (this.cardInfo.vendor === "blockchain") {
+        vendorClassName = "blockchain";
+      }
+      if (this.cardInfo.vendor === "evil") {
+        vendorClassName = "evil";
+      }
+      return vendorClassName;
     }
+  },
 };
 </script>
 
@@ -76,29 +83,29 @@ export default {
   }
 
   &.bitcoin {
-    background: #FFAE34;
+    background: #ffae34;
   }
 
   &.ninja {
     background: #222222;
 
     #cardMiddle {
-
       h3 {
         color: #ffffff;
       }
     }
-    
-    #cardBottom {
 
+    #cardBottom {
       .name {
-        h5, h4 {
+        h5,
+        h4 {
           color: #ffffff;
         }
       }
 
       .date {
-        h5, h4 {
+        h5,
+        h4 {
           color: #ffffff;
         }
       }
@@ -106,25 +113,25 @@ export default {
   }
 
   &.blockchain {
-    background: #8B58F9;
+    background: #8b58f9;
 
     #cardMiddle {
-
       h3 {
         color: #ffffff;
       }
     }
-    
-    #cardBottom {
 
+    #cardBottom {
       .name {
-        h5, h4 {
+        h5,
+        h4 {
           color: #ffffff;
         }
       }
 
       .date {
-        h5, h4 {
+        h5,
+        h4 {
           color: #ffffff;
         }
       }
@@ -132,25 +139,25 @@ export default {
   }
 
   &.evil {
-    background: #F33355;
+    background: #f33355;
 
     #cardMiddle {
-
       h3 {
         color: #ffffff;
       }
     }
-    
-    #cardBottom {
 
+    #cardBottom {
       .name {
-        h5, h4 {
+        h5,
+        h4 {
           color: #ffffff;
         }
       }
 
       .date {
-        h5, h4 {
+        h5,
+        h4 {
           color: #ffffff;
         }
       }
@@ -162,14 +169,13 @@ export default {
     justify-content: space-between;
     width: 380px;
     height: 100px;
-    
+
     .chipImg {
       margin-left: 1rem;
     }
 
     .vendorImg {
       margin-right: 1rem;
-      margin-top: -3rem;
     }
   }
 
@@ -182,10 +188,10 @@ export default {
     margin-top: -1rem;
 
     h3 {
-        font-size: 29px;
-        line-height: 32px;
-        letter-spacing: 0.03em;
-        color: #000000;
+      font-size: 29px;
+      line-height: 32px;
+      letter-spacing: 0.03em;
+      color: #000000;
     }
   }
 

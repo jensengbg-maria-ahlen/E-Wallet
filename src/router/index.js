@@ -7,12 +7,14 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/Home.vue')
+    component: () => import('@/views/Home.vue'),
+    meta: { title: 'E-WALLET'}
   },
   {
     path: '/addcard',
     name: 'AddCard',
-    component: () => import('@/views/AddCard.vue')
+    component: () => import('@/views/AddCard.vue'),
+    meta: { title: 'ADD A NEW BANK CARD'}
   }
 ]
 

@@ -68,13 +68,16 @@ export default {
         date: "",
         ccv: "",
         vendor: "",
-      },
+      }
     }
   },
   methods: {
     addValue() {
       this.$emit("cardInfo", this.cardInfo);
     },
+    localCard() {
+      return localStorage.setItem('card', this.cardInfo)
+    }
   }
 };
 </script>

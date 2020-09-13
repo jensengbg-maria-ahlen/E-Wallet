@@ -5,7 +5,6 @@
      :key="index" 
      :cardData="card" 
      @click.native="showActiveCard(index)" 
-     v-model="showActiveCard"
     />
     <button @click="goTo" id="goToButton">ADD A NEW CARD</button>
   </section>
@@ -37,7 +36,6 @@ export default {
 <style lang="scss">
 #cardStack {
   margin-top: 3rem;
-
 
   #goToButton {
     margin-top: 2rem;

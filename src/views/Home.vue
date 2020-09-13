@@ -2,8 +2,8 @@
   <main id="home">
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
-    <Card :cardData="activeCard" v-on:cardData="activeCard" />
-    <CardStack :cards="cards" @getTheCard="getTheCard" />
+    <Card :cardData="activeCard" />
+    <CardStack :cards="cards" @getTheCard="getTheCard" v-on:activeCard="showCard" />
   </main>
 </template>
 
@@ -33,6 +33,9 @@ export default {
     getTheCard() {
       let cards = localStorage.getItem('cards')
       return cards
+    },
+    showCard(value) {
+      console.log(this.card = value)
     }
   }
 }

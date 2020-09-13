@@ -1,10 +1,11 @@
 <template>
-  <section id="cardStack"  >
+  <section id="cardStack">
     <Card 
      v-for="(card, index) in cards" 
      :key="index" 
      :cardData="card" 
      @click.native="showActiveCard(index)" 
+     v-model="showActiveCard"
     />
     <button @click="goTo" id="goToButton">ADD A NEW CARD</button>
   </section>
@@ -20,17 +21,6 @@ export default {
   },
   props: {
     cards: Array,
-  },
-  data() {
-    return {
-      cardObj: {
-        cardNumber: "",
-        name: "",
-        date: "",
-        ccv: "",
-        vendor: "",
-      },
-    }
   },
   methods: {
     goTo() {

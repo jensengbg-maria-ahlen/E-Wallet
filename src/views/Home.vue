@@ -25,8 +25,8 @@ export default {
   },
   computed: {
     activeCard() {
-      //let active = this.cards.filter(card => card.key == this.$route.params.key)[0]
-      let active = this.showCard()
+      let active = this.cards.filter(card => card.key == this.$route.params.key)[0]
+      //let active = this.showCard()
       return active
     }
   },
@@ -36,7 +36,7 @@ export default {
       return cards
     },
     showCard(value) {
-      return console.log('HEJ', (this.cardData = value))
+      return (this.cardData = value)
     }
   }
 }

@@ -68,13 +68,9 @@ export default {
     }
   },
   methods: {
-    infoOfTheCard() {
-      this.cardInfo.index = this.$vnode.key
-      this.$emit('cardInfo', this.cardInfo)
-    },
     showActiveCard() {
       this.cardData.index = this.$vnode.key
-      this.$emit('activecard', this.cardData)
+      this.$emit('cardData', this.cardData)
     }
   }
     

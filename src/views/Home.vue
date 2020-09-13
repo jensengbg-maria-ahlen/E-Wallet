@@ -2,8 +2,8 @@
   <main id="home">
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
-    <Card :cardData="activeCard" @showCard="activeCard"/>
-    <CardStack :cards="cards" @getTheCards="getTheCards" @activeCard="showCard" />
+    <Card :cardData="activeCard" @activeCard="showCard" />
+    <CardStack :cards="cards" @getTheCards="getTheCards" />
   </main>
 </template>
 
@@ -25,8 +25,8 @@ export default {
   },
   computed: {
     activeCard() {
-      let active = this.cards.filter(card => card.key == this.$route.params.key)[0]
-      //let active = this.showCard()
+      //let active = this.cards.filter(card => card.key == this.$route.params.key)[0]
+      let active = this.showCard()
       return active
     }
   },
@@ -36,7 +36,7 @@ export default {
       return cards
     },
     showCard(value) {
-      return (this.card = value), this.activeCard()
+      return console.log('HEJ', (this.cardData = value))
     }
   }
 }

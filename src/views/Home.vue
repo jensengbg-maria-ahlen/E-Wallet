@@ -2,8 +2,8 @@
   <main id="home">
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
-    <Card :cardData="allCards" @click="showActiveCard" />
-    <CardStack :cards="cards" @getTheCard="getTheCard" @click="showActiveCard"/>
+    <Card :cardData="activeCard" v-on:cardData="activeCard" />
+    <CardStack :cards="cards" @getTheCard="getTheCard" />
   </main>
 </template>
 
@@ -23,32 +23,16 @@ export default {
     cardInfo: Object,
     cards: Array
   },
-  data() {
-    return {
-      cardsArray: [
-        {
-          cardNumber: "",
-          name: "",
-          date: "",
-          ccv: "",
-          vendor: "",
-        }
-      ]
-    }
-  },
   computed: {
-    allCards() {
-      return this.cards[0]
+    activeCard() {
+      let active = this.cards.filter(card => card.key == this.$route.params.key)[0]
+      return active
     }
   },
   methods: {
     getTheCard() {
-      let cards = localStorage.getItem('newCard')
+      let cards = localStorage.getItem('cards')
       return cards
-    },
-    showActiveCard() {
-      let index = this.cardsArray.findIndex(item => item.id === this.cards.id );
-      console.log(index)
     }
   }
 }

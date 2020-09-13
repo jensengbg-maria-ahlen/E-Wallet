@@ -1,6 +1,11 @@
 <template>
-  <section id="cardStack">
-    <Card v-for="(card, index) in cards" :key="index" :cardData="card" />
+  <section id="cardStack"  >
+    <Card 
+     v-for="(card, index) in cards" 
+     :key="index" 
+     :cardData="card" 
+     @click.native="showActiveCard(index)" 
+    />
     <button @click="goTo" id="goToButton">ADD A NEW CARD</button>
   </section>
 </template>
@@ -24,17 +29,16 @@ export default {
         date: "",
         ccv: "",
         vendor: "",
-      }
-    }
-  },
-  computed: {
-    info() {
-      return this.card;
+      },
     }
   },
   methods: {
     goTo() {
       this.$router.push("/addcard");
+    },
+    showActiveCard(index) {
+      let activeCard = this.cards[index]
+      this.$emit('activeCard', activeCard)
     }
   }
 };

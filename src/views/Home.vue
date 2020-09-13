@@ -2,7 +2,7 @@
   <main id="home">
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
-    <Card :cardData="activeCard" />
+    <Card :cardData="activeCard" @showCard="activeCard"/>
     <CardStack :cards="cards" @getTheCards="getTheCards" @activeCard="showCard" />
   </main>
 </template>
@@ -36,8 +36,7 @@ export default {
       return cards
     },
     showCard(value) {
-      let choosenCard = (this.card = value)
-      return console.log(JSON.stringify(choosenCard))
+      return (this.card = value), this.activeCard()
     }
   }
 }

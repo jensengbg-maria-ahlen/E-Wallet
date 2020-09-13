@@ -4,8 +4,7 @@
      v-for="(card, index) in cards" 
      :key="index" 
      :cardData="card" 
-     @click.native="showActiveCard(index)" 
-     :style="{zindex: 10, marginTop: '-10rem'}"
+     :style="{zindex: 10, marginTop: '-11.2rem'}"
     />
     <button @click="goTo" id="goToButton">ADD A NEW CARD</button>
   </section>
@@ -25,9 +24,6 @@ export default {
   methods: {
     goTo() {
       this.$router.push("/addcard");
-    },
-    showActiveCard(index) {
-      this.$emit('activeCard', index)
     }
   }
 };
@@ -35,7 +31,7 @@ export default {
 
 <style lang="scss">
 #cardStack {
-  margin-top: 12rem;
+  margin-top: 14rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -1,5 +1,5 @@
 <template>
-  <article id="card" :class="vendorOfChoice">
+  <article id="card" :class="vendorOfChoice" @click="showActiveCard">
     <section id="cardTop">
       <article class="chipImg">
         <img v-if="infoCard.vendor == 'bitcoin'" src="@/assets/chip-dark.svg" alt="chip" />
@@ -68,9 +68,13 @@ export default {
     }
   },
   methods: {
-    infoVendor() {
+    infoOfTheCard() {
       this.cardInfo.index = this.$vnode.key
       this.$emit('cardInfo', this.cardInfo)
+    },
+    showActiveCard() {
+      this.cardData.index = this.$vnode.key
+      this.$emit('activecard', this.cardData)
     }
   }
     

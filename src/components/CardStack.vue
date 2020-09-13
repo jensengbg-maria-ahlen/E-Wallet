@@ -5,6 +5,7 @@
      :key="index" 
      :cardData="card" 
      @click.native="showActiveCard(index)" 
+     :style="{zindex: 10, marginTop: '-10rem'}"
     />
     <button @click="goTo" id="goToButton">ADD A NEW CARD</button>
   </section>
@@ -35,10 +36,14 @@ export default {
 
 <style lang="scss">
 #cardStack {
-  margin-top: 3rem;
+  margin-top: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
   #goToButton {
-    margin-top: 2rem;
+    margin: 2rem 0 1rem 0;
     width: 382px;
     height: 80px;
     border: 1px solid #000000;

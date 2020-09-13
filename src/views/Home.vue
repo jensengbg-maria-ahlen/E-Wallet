@@ -59,7 +59,7 @@ export default {
     color: rgba(34, 34, 34, 0.6);
     }
 
-    Card {
+    #Card {
       margin-bottom: 1rem;
     }
     

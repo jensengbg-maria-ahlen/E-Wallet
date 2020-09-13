@@ -27,8 +27,7 @@ export default {
       this.$router.push("/addcard");
     },
     showActiveCard(index) {
-      let activeCard = this.cards[index]
-      this.$emit('activeCard', activeCard)
+      this.$emit('activeCard', index)
     }
   }
 };

@@ -69,6 +69,7 @@ export default {
   },
   methods: {
     infoVendor() {
+      this.cardInfo.index = this.$vnode.key
       this.$emit('cardInfo', this.cardInfo)
     }
   }

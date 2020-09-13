@@ -26,7 +26,7 @@ export default {
   computed: {
     activeCard() {
       let active = this.cards.filter(card => card.key == this.$route.params.key)[0]
-      //let cardActive = this.showCard(value)
+      //let active = this.showCard()
       return active
     }
   },

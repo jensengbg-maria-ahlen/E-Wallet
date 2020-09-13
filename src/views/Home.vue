@@ -58,6 +58,8 @@ export default {
   #home {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
     #activeCard {
     font-family: 'Source Sans Pro', sans-serif;
@@ -66,6 +68,11 @@ export default {
     font-size: 12px;
     line-height: 15px;
     color: rgba(34, 34, 34, 0.6);
-    }  
+    }
+
+    Card {
+      margin-bottom: 1rem;
+    }
+    
   }
 </style>

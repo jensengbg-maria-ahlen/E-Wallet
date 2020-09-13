@@ -24,7 +24,14 @@ export default {
       return (this.cardInfo = value), this.addCards();
     },
     addCards() {
-      return this.cards.push(this.cardInfo)
+      this.cards.push(this.cardInfo);
+      localStorage.setItem('cards', JSON.stringify(this.cards));
+    }
+  },
+  mounted() {
+    let cards = localStorage.getItem('cards');
+    if(cards !== null) {
+      this.cards = JSON.parse(cards);
     }
   }
 }

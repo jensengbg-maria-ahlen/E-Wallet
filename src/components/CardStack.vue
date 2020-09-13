@@ -30,18 +30,20 @@ export default {
   computed: {
     info() {
       return this.card;
-    },
+    }
   },
   methods: {
     goTo() {
       this.$router.push("/addcard");
-    },
+    }
   }
 };
 </script>
 
 <style lang="scss">
 #cardStack {
+  margin-top: 3rem;
+
 
   #goToButton {
     margin-top: 2rem;

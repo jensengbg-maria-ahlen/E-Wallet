@@ -2,15 +2,19 @@
   <article id="card" :class="vendorOfChoice">
     <section id="cardTop">
       <article class="chipImg">
-        <img src="@/assets/chip-light.svg" alt="chip" />
+        <img v-if="infoCard.vendor == 'bitcoin'" src="@/assets/chip-dark.svg" alt="chip" />
+        <img v-if="infoCard.vendor == 'ninja'" src="@/assets/chip-light.svg" alt="chip" />
+        <img v-if="infoCard.vendor == 'blockchain'" src="@/assets/chip-light.svg" alt="chip" />
+        <img v-if="infoCard.vendor == 'evil'" src="@/assets/chip-light.svg" alt="chip" />
+        <img v-if="infoCard.vendor == ''" src="@/assets/chip-dark.svg" alt="chip" />
       </article>
 
       <article class="vendorImg" >
-        <img v-if="cardData.vendor == 'bitcoin'" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
-        <img v-if="cardData.vendor == 'ninja'" src="@/assets/vendor-ninja.svg" alt="vendor" />
-        <img v-if="cardData.vendor == 'blockchain'" src="@/assets/vendor-blockchain.svg" alt="vendor" />
-        <img v-if="cardData.vendor == 'evil'" src="@/assets/vendor-evil.svg" alt="vendor" />
-        <img v-if="cardData.vendor == ''" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
+        <img v-if="infoCard.vendor == 'bitcoin'" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
+        <img v-if="infoCard.vendor == 'ninja'" src="@/assets/vendor-ninja.svg" alt="vendor" />
+        <img v-if="infoCard.vendor == 'blockchain'" src="@/assets/vendor-blockchain.svg" alt="vendor" />
+        <img v-if="infoCard.vendor == 'evil'" src="@/assets/vendor-evil.svg" alt="vendor" />
+        <img v-if="infoCard.vendor == ''" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
       </article>
     </section>
 

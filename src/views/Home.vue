@@ -3,7 +3,7 @@
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
     <Card :cardData="activeCard" />
-    <CardStack :cards="cards" @getTheCard="getTheCard" v-on:activeCard="showCard" />
+    <CardStack :cards="cards" @getTheCards="getTheCards" @activeCard="showCard" />
   </main>
 </template>
 
@@ -26,16 +26,18 @@ export default {
   computed: {
     activeCard() {
       let active = this.cards.filter(card => card.key == this.$route.params.key)[0]
+      //let cardActive = this.showCard(value)
       return active
     }
   },
   methods: {
-    getTheCard() {
+    getTheCards() {
       let cards = localStorage.getItem('cards')
       return cards
     },
     showCard(value) {
-      console.log(this.card = value)
+      let choosenCard = (this.card = value)
+      return console.log(JSON.stringify(choosenCard))
     }
   }
 }

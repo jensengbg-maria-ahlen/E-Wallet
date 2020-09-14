@@ -2,8 +2,13 @@
   <main id="home">
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
-    <Card :cardData="activeCard" @activeCard="showCard" />
-    <CardStack :cards="cards" @getTheCards="getTheCards" />
+    <Card 
+      :cardData="cardInfo" 
+    />
+    <CardStack 
+      :cards="cards"
+      @showCard="showCard" 
+    />
   </main>
 </template>
 
@@ -23,20 +28,9 @@ export default {
     cardInfo: Object,
     cards: Array
   },
-  computed: {
-    activeCard() {
-      let active = this.cards.filter(card => card.key == this.$route.params.key)[0]
-      //let active = this.showCard()
-      return active
-    }
-  },
   methods: {
-    getTheCards() {
-      let cards = localStorage.getItem('cards')
-      return cards
-    },
-    showCard(value) {
-      return (this.cardData = value)
+    showCard(card) {
+      this.$emit('activeCard', card)
     }
   }
 }

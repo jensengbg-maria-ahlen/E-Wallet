@@ -30,7 +30,9 @@ export default {
   },
   methods: {
     showCard(card) {
-      this.$emit('activeCard', card)
+      let activeCard = (this.cardInfo = card)
+      this.$emit('activeCard', activeCard)
+      console.log(activeCard)
     }
   }
 }

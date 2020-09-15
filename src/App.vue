@@ -2,9 +2,10 @@
   <div id="app">
     <router-view 
       :cards="cards" 
-      :cardInfo="cardInfo" 
+      :cardInfo="cardInfo"
       @cardInfo="listenCardInfo" 
-      @addCards="addCards"/>
+      @addCards="addCards"
+    />  
   </div>
 </template>
 

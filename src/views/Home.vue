@@ -3,11 +3,12 @@
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
     <Card 
-      :cardData="cardInfo" 
+      :cardData="theActiveCard" 
     />
     <CardStack 
       :cards="cards"
-      @showCard="showCard" 
+      :cardInfo="cardInfo"
+      @activecard="activeCard" 
     />
   </main>
 </template>
@@ -24,15 +25,24 @@ export default {
     Card,
     CardStack
   },
+  data() {
+    return {
+      theActiveCard: {
+        cardNumber: "",
+        name: "",
+        date: "",
+        ccv: "",
+        vendor: "",
+      }
+    }
+  },
   props: {
     cardInfo: Object,
-    cards: Array
+    cards: Array,
   },
   methods: {
-    showCard(card) {
-      let activeCard = (this.cardInfo = card)
-      this.$emit('activeCard', activeCard)
-      console.log(activeCard)
+    activeCard(card) {
+      this.theActiveCard = card
     }
   }
 }

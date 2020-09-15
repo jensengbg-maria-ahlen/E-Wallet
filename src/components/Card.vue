@@ -76,7 +76,7 @@ export default {
       this.$emit('cardInfo', this.cardInfo)    //Går ej att ha liten bokstav på 'cardInfo', då kan ej korten läggas till...
     },
     showActiveCard() {
-      this.$emit('activeCard', this.cardData)
+      this.$emit('activecard', this.cardData)
     }
   }
     

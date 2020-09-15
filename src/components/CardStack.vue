@@ -5,7 +5,7 @@
      :key="index" 
      :cardData="card" 
      :style="{zindex: 10, marginTop: '-11.2rem'}"
-     @showActiveCard="showActiveCard"
+     @activecard="activeCard"
     />
     <button @click="goTo" id="goToButton">ADD A NEW CARD</button>
   </section>
@@ -26,8 +26,8 @@ export default {
     goTo() {
       this.$router.push("/addcard");
     },
-    showActiveCard(card) {
-      this.$emit('activeCard', card)
+    activeCard(card) {
+      this.$emit('activecard', card)
     }
   }
 };

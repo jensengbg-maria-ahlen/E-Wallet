@@ -70,10 +70,12 @@ export default {
     }
   },
   methods: {
-    cardOfChoice() {
-        let choice = this.$store.getters.cardChoice(this.cardIndex)
-        this.$store.commit('chosenCard', choice)
-        }
+    infoVendor() {
+      this.$emit('cardInfo', this.cardInfo)    //Går ej att ha liten bokstav på 'cardInfo', då kan ej korten läggas till...
+    },
+    showActiveCard() {
+      this.$emit('activeCard', this.cardData)
+    }
   }
 };
 </script>

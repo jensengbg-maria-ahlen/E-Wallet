@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <router-view />  
+    <router-view 
+      :cards="cards" 
+      :cardInfo="cardInfo" 
+      @cardInfo="listenCardInfo" 
+      @addCards="addCards"/>
   </div>
 </template>
 

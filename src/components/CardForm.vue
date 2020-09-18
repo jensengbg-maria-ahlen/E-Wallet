@@ -71,15 +71,13 @@ export default {
   },
   methods: {
     addValue() {
-      this.$emit("cardInfo", this.cardInfo);
-    },
-    localCard() {
-      return localStorage.setItem('newCard', this.cardInfo)
+      this.$store.commit('addCard', this.cardInfo),
+      localStorage.setItem('cards', JSON.stringify(this.cardInfo));
     },
     goTo() {
       this.addValue();
       this.$router.push("/");
-    }
+    },
   }
 };
 </script>

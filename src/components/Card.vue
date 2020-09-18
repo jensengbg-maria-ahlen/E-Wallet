@@ -1,40 +1,40 @@
 <template>
   <article 
     id="card" 
-    :class="vendorOfChoice" 
-    @click="showActiveCard"
+    :class="vendorOfChoice"
+    @click="cardOfChoice"
   >
     <section id="cardTop">
       <article class="chipImg">
-        <img v-if="cardData.vendor == 'bitcoin'" src="@/assets/chip-dark.svg" alt="chip" />
-        <img v-if="cardData.vendor == 'ninja'" src="@/assets/chip-light.svg" alt="chip" />
-        <img v-if="cardData.vendor == 'blockchain'" src="@/assets/chip-light.svg" alt="chip" />
-        <img v-if="cardData.vendor == 'evil'" src="@/assets/chip-light.svg" alt="chip" />
-        <img v-if="cardData.vendor == ''" src="@/assets/chip-dark.svg" alt="chip" />
+        <img v-if="card.vendor == 'bitcoin'" src="@/assets/chip-dark.svg" alt="chip" />
+        <img v-if="card.vendor == 'ninja'" src="@/assets/chip-light.svg" alt="chip" />
+        <img v-if="card.vendor == 'blockchain'" src="@/assets/chip-light.svg" alt="chip" />
+        <img v-if="card.vendor == 'evil'" src="@/assets/chip-light.svg" alt="chip" />
+        <img v-if="card.vendor == ''" src="@/assets/chip-dark.svg" alt="chip" />
       </article>
 
       <article class="vendorImg" >
-        <img v-if="cardData.vendor == 'bitcoin'" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
-        <img v-if="cardData.vendor == 'ninja'" src="@/assets/vendor-ninja.svg" alt="vendor" />
-        <img v-if="cardData.vendor == 'blockchain'" src="@/assets/vendor-blockchain.svg" alt="vendor" />
-        <img v-if="cardData.vendor == 'evil'" src="@/assets/vendor-evil.svg" alt="vendor" />
-        <img v-if="cardData.vendor == ''" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
+        <img v-if="card.vendor == 'bitcoin'" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
+        <img v-if="card.vendor == 'ninja'" src="@/assets/vendor-ninja.svg" alt="vendor" />
+        <img v-if="card.vendor == 'blockchain'" src="@/assets/vendor-blockchain.svg" alt="vendor" />
+        <img v-if="card.vendor == 'evil'" src="@/assets/vendor-evil.svg" alt="vendor" />
+        <img v-if="card.vendor == ''" src="@/assets/vendor-bitcoin.svg" alt="vendor" />
       </article>
     </section>
 
     <section id="cardMiddle">
-      <h3>{{ infoCard.cardNumber }}</h3>
+      <h3>{{ card.cardNumber }}</h3>
     </section>
 
     <section id="cardBottom">
       <section class="name">
         <h5>CARDHOLDER NAME</h5>
-        <h4>{{ cardData.name }}</h4>
+        <h4>{{ card.name }}</h4>
       </section>
 
       <section class="date">
         <h5>VALID THRU</h5>
-        <h4>{{ cardData.date }}</h4>
+        <h4>{{ card.date }}</h4>
       </section>
     </section>
   </article>
@@ -44,42 +44,37 @@
 export default {
   name: "Card",
   props: {
-    cardData: Object,
+    card: Object,
   },
   computed: {
     vendorOfChoice() {
       let vendorClassName = "";
 
-      if (this.cardData.vendor === "") {
+      if (this.card.vendor === "") {
         vendorClassName = "standard";
       }
-      if (this.cardData.vendor === "bitcoin") {
+      if (this.card.vendor === "bitcoin") {
         vendorClassName = "bitcoin";
       }
-      if (this.cardData.vendor === "ninja") {
+      if (this.card.vendor === "ninja") {
         vendorClassName = "ninja";
       }
-      if (this.cardData.vendor === "blockchain") {
+      if (this.card.vendor === "blockchain") {
         vendorClassName = "blockchain";
       }
-      if (this.cardData.vendor === "evil") {
+      if (this.card.vendor === "evil") {
         vendorClassName = "evil";
       }
       return vendorClassName;
-    },
-    infoCard() {
-      return this.cardData
     }
   },
   methods: {
-    infoVendor() {
-      this.$emit('cardInfo', this.cardInfo)    //Går ej att ha liten bokstav på 'cardInfo', då kan ej korten läggas till...
-    },
-    showActiveCard() {
-      this.$emit('activecard', this.cardData)
+    /*
+    showCard() {
+      this.$store.commit('showCard', this.$vnode.key)
     }
+    */
   }
-    
 };
 </script>
 

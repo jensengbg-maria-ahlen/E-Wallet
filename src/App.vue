@@ -1,44 +1,12 @@
 <template>
   <div id="app">
-    <router-view 
-      :cards="cards" 
-      :cardInfo="cardInfo"
-      @cardInfo="listenCardInfo" 
-      @addCards="addCards"
-    />  
+    <router-view />  
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
-  data() {
-    return {
-      cardInfo: {
-        cardNumber: "",
-        name: "",
-        date: "",
-        ccv: "",
-        vendor: "",
-      },
-      cards: []
-    }
-  },
-  methods: {
-    listenCardInfo(value) {
-      return (this.cardInfo = value), this.addCards();
-    },
-    addCards() {
-      this.cards.push(this.cardInfo);
-      localStorage.setItem('cards', JSON.stringify(this.cards));
-    }
-  },
-  mounted() {
-    let cards = localStorage.getItem('cards');
-    if(cards !== null) {
-      this.cards = JSON.parse(cards);
-    }
-  }
 }
 </script>
 

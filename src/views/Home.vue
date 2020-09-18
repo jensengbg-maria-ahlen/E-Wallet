@@ -3,12 +3,10 @@
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
     <Card 
-      :cardData="theActiveCard" 
+      :card="cardChoice" 
     />
     <CardStack 
       :cards="cards"
-      :cardInfo="cardInfo"
-      @activecard="activeCard" 
     />
   </main>
 </template>
@@ -25,24 +23,15 @@ export default {
     Card,
     CardStack
   },
-  data() {
-    return {
-      theActiveCard: {
-        cardNumber: "",
-        name: "",
-        date: "",
-        ccv: "",
-        vendor: "",
-      }
-    }
-  },
-  props: {
-    cardInfo: Object,
-    cards: Array,
-  },
-  methods: {
-    activeCard(card) {
-      this.theActiveCard = card
+  computed: {
+    card() {
+      return this.$store.state.card
+    },
+    cards() {
+      return this.$store.state.cards
+    },
+    cardChoice() {
+      return this.$store.getters.cardChoice(this.$route.params.key)
     }
   }
 }

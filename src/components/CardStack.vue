@@ -3,9 +3,8 @@
     <Card 
      v-for="(card, index) in cards" 
      :key="index" 
-     :cardData="card" 
+     :card="card"
      :style="{zindex: 10, marginTop: '-11.2rem'}"
-     @activecard="activeCard"
     />
     <button @click="goTo" id="goToButton">ADD A NEW CARD</button>
   </section>
@@ -20,14 +19,11 @@ export default {
     Card,
   },
   props: {
-    cards: Array,
+    cards: Array
   },
   methods: {
     goTo() {
       this.$router.push("/addcard");
-    },
-    activeCard(card) {
-      this.$emit('activecard', card)
     }
   }
 };

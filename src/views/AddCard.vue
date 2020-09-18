@@ -2,7 +2,7 @@
   <section id="addCard">
     <Top />
     <h4 id="newCard">NEW CARD</h4>
-    <Card :cardData="formInfo" />
+    <Card :card="card"/>
     <CardForm v-on:cardInfo="addInfo" />
   </section>
 </template>
@@ -21,6 +21,11 @@ export default {
   },
   props: {
     cardInfo: Object,
+  },
+  computed: {
+    card() {
+      return this.$store.state.card
+    }
   },
   data() {
     return {

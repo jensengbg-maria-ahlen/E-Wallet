@@ -45,6 +45,7 @@ export default {
   name: "Card",
   props: {
     card: Object,
+    cardIndex: Number
   },
   computed: {
     vendorOfChoice() {
@@ -69,11 +70,10 @@ export default {
     }
   },
   methods: {
-    /*
-    showCard() {
-      this.$store.commit('showCard', this.$vnode.key)
-    }
-    */
+    cardOfChoice() {
+        let choice = this.$store.getters.cardChoice(this.cardIndex)
+        this.$store.commit('chosenCard', choice)
+        }
   }
 };
 </script>

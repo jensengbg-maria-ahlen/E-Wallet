@@ -3,7 +3,7 @@
     <Top />
     <h4 id="newCard">NEW CARD</h4>
     <Card :card="card"/>
-    <CardForm v-on:cardInfo="addInfo" />
+    <CardForm />
   </section>
 </template>
 
@@ -19,29 +19,20 @@ export default {
     Card,
     CardForm,
   },
-  props: {
-    cardInfo: Object,
-  },
-  computed: {
-    card() {
-      return this.$store.state.card
-    }
-  },
   data() {
     return {
-      formInfo: {
+      cardTemplate: {
         cardNumber: "",
         name: "",
         date: "",
         ccv: "",
-        vendor: "",
+        vendor: ""
       }
     }
   },
-  methods: {
-    addInfo(value) {
-      this.formInfo = value;
-      this.$emit("cardInfo", this.formInfo);
+  computed: {
+    card() {
+      return this.cardTemplate
     }
   }
 };

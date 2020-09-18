@@ -3,7 +3,7 @@
     <Top />
     <h4 id="activeCard">ACTIVE CARD</h4>
     <Card 
-      :card="cardChoice" 
+      :card="card" 
     />
     <CardStack 
       :cards="cards"
@@ -29,9 +29,6 @@ export default {
     },
     cards() {
       return this.$store.state.cards
-    },
-    cardChoice() {
-      return this.$store.getters.cardChoice(this.$route.params.key)
     }
   }
 }

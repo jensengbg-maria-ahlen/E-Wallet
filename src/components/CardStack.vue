@@ -4,6 +4,7 @@
      v-for="(card, index) in cards" 
      :key="index" 
      :card="card"
+     :cardIndex="index"
      :style="{zindex: 10, marginTop: '-11.2rem'}"
     />
     <button @click="goTo" id="goToButton">ADD A NEW CARD</button>

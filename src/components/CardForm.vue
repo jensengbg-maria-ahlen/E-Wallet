@@ -9,6 +9,7 @@
         maxlength="16"
         minlength="16"
         onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+        v-on:keyup="showInfo"
       />
     </section>
     <section class="cardName">
@@ -17,6 +18,7 @@
         type="text"
         v-model="cardInfo.name"
         placeholder="FIRSTNAME LASTNAME"
+        v-on:keyup="showInfo"
       />
     </section>
     <section class="dateAndCcv">
@@ -28,6 +30,7 @@
           placeholder="MM/YY"
           maxlength="5"
           minlength="5"
+          v-on:keyup="showInfo"
         />
       </section>
       <section class="cardCcv">
@@ -43,7 +46,7 @@
     </section>
     <section class="cardVendor">
       <span>VENDOR</span>
-      <select v-model="cardInfo.vendor">
+      <select v-model="cardInfo.vendor" v-on:keyup="showInfo">
         <option value="bitcoin">BITCOIN INC</option>
         <option value="ninja">NINJA BANK</option>
         <option value="blockchain">BLOCK CHAIN INC</option>
@@ -71,13 +74,15 @@ export default {
   },
   methods: {
     addValue() {
-      this.$store.commit('addCard', this.cardInfo),
-      localStorage.setItem('cards', JSON.stringify(this.cardInfo));
+      this.$store.commit('addCard', this.cardInfo)
     },
     goTo() {
       this.addValue();
       this.$router.push("/");
     },
+    showInfo() {
+
+    }
   }
 };
 </script>

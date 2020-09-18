@@ -4,8 +4,10 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  strict: true,
   state: {
     cards: [],
+    index: 0,
     card: {
       cardNumber: "",
       name: "",
@@ -16,19 +18,16 @@ export default new Vuex.Store({
   },
   mutations: {
     addCard(state, newCard) {
+      newCard.key = state.index;
       state.cards.push(newCard)
+      state.index++;
     },
-    showCard(state, cardOfChoice) {
-      state.card.push(cardOfChoice)
+    chosenCard(state, choice) {
+      state.card = choice
     }
   },
   actions: {
   },
   getters: {
-    cardChoice(state) {
-      return (index) => {
-        return state.cards.filter(card => card.key === index)[0]
-      }
-    }
   }
 })
